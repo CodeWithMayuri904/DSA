@@ -1,0 +1,27 @@
+import java.util.Arrays;
+
+class Solution {
+    public String[] sortPeople(String[] names, int[] heights) {
+        int n = names.length;
+        
+        // Create an array of indices (0,1,2,...)
+
+        Integer[] indices = new Integer[n];
+        for (int i = 0; i < n; i++) {
+            indices[i] = i;
+        }
+
+        // Sort indices 
+
+        Arrays.sort(indices, (a, b) -> heights[b] - heights[a]);
+
+        String[] result = new String[n];
+
+        // Array with names sorted by heights...
+        for (int i = 0; i < n; i++) {
+            result[i] = names[indices[i]];
+        }
+
+        return result;
+    }
+}
